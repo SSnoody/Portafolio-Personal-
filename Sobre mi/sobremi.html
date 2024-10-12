@@ -1,0 +1,250 @@
+<html><head><base href="/Sobre mi/sobremi.html"><title>Sobre Mí - Snoody</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&amp;family=Montserrat:wght@400;700&amp;family=Orbitron:wght@400;700&amp;display=swap" rel="stylesheet"><style>
+:root {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --accent-color: #00ff00;
+    --card-bg: rgba(18, 18, 18, 0.9);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+}
+
+.header {
+    background-color: var(--card-bg);
+    padding: 60px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(0,255,0,0.1) 0%, rgba(0,0,0,0) 100%);
+    z-index: 1;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    color: var(--accent-color);
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 2;
+}
+
+.content-section {
+    padding: 70px 0;
+}
+
+.about-card {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,255,0,0.1);
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 255, 0, 0.1);
+}
+
+.about-card h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.skill-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.skill-list li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.skill-list li i {
+    color: var(--accent-color);
+    margin-right: 15px;
+    font-size: 1.2em;
+}
+
+.quote {
+    font-style: italic;
+    font-size: 1.3em;
+    color: #cccccc;
+    text-align: center;
+    margin: 60px 0;
+    padding: 20px;
+    background: rgba(0,255,0,0.05);
+    border-radius: 10px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
+.btn-custom {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+.linux-prompt {
+    position: fixed;
+    top: 75px;
+    left: 60px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.linux-prompt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.prompt-symbol {
+    color: #0f0;
+}
+
+.prompt-text {
+    color: #fff;
+}
+
+.prompt-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background-color: #fff;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+.btn-custom:hover {
+    background-color: #00cc00;
+    transform: scale(1.05);
+}
+</style></head><body>
+<header class="header">
+    <h1>Sobre Mí</h1>
+</header>
+<div class="main-content">
+    <div class="linux-prompt mb-4" onclick="window.location.href='/'">
+        <span class="prompt-symbol">$</span>
+        <span class="prompt-text">cd /home/snoody/SobreMi</span>
+        <span class="prompt-cursor"></span>
+    </div>
+<div class="container content-section">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="about-card fade-in delay-1">
+                <h2>¿Quién soy?</h2>
+                <p>Soy un estudiante de tercer año de la carrera de Ciberseguridad, apasionado por la protección digital y la tecnología. Mi viaje en este fascinante mundo comenzó con una curiosidad insaciable por entender los mecanismos detrás de la seguridad informática. Cada día me dedico a perfeccionar mis habilidades, enfrentando nuevos desafíos y aprendiendo las últimas tendencias en ciberseguridad.</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="about-card fade-in delay-2">
+                <h2>Mi Enfoque</h2>
+                <p>Me especializo en el estudio y aplicación de técnicas de seguridad informática, con un enfoque particular en la protección de sistemas y redes. Creo firmemente en la importancia de la ciberseguridad en nuestro mundo cada vez más digitalizado, y me esfuerzo por desarrollar soluciones innovadoras que combinen seguridad robusta con funcionalidad práctica.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="about-card fade-in delay-3">
+                <h2>Habilidades Clave</h2>
+                <ul class="skill-list">
+                    <li><i class="fab fa-windows"></i> Windows Server (básico)</li>
+                    <li><i class="fas fa-microchip"></i> Creación de proyectos hardware</li>
+                    <li><i class="fab fa-linux"></i> Administración de Sistemas Linux</li>
+                    <li><i class="fab fa-aws"></i> Cloud Computing (AWS)</li>
+                    <li><i class="fas fa-network-wired"></i> Redes y Protocolos</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="about-card fade-in delay-1">
+                <h2>Proyectos Destacados</h2>
+                <p>A lo largo de mi formación, he trabajado en diversos proyectos que abarcan desde análisis de vulnerabilidades hasta el desarrollo de herramientas de seguridad. Mis proyectos más notables, como BlueJammer y Marauder, demuestran mi capacidad para integrar hardware y software en soluciones prácticas de seguridad, aplicando los conocimientos adquiridos en mi carrera.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="quote fade-in delay-2">
+        "La seguridad no es solo una característica, es una mentalidad que debe integrarse en cada aspecto de nuestra vida digital."
+    </div>
+    
+    <div class="row">
+        <div class="col-md-12">
+            <div class="about-card fade-in delay-3">
+                <h2>Objetivos Futuros</h2>
+                <p>Mi meta es convertirme en un profesional líder en el campo de la ciberseguridad. Aspiro a contribuir significativamente en la creación de un entorno digital más seguro y resiliente. Continuamente busco oportunidades para ampliar mis conocimientos, participar en conferencias y hackathones, y mantenerme al día con las últimas amenazas y tecnologías de seguridad. Mi visión es ser parte de la vanguardia en la lucha contra el cibercrimen y en la protección de la infraestructura digital crítica.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a href="/Contacto/contacto.html" class="btn btn-custom fade-in delay-3">Contáctame</a>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const cards = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {threshold: 0.1});
+
+    cards.forEach(card => {
+        observer.observe(card);
+    });
+});
+</script>
+</body></html>
