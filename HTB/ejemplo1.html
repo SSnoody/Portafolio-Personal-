@@ -1,0 +1,418 @@
+<html><head><base href="/index.html">
+<title>HackTheBox Write-Ups - Snoody's Cybersecurity Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&family=Montserrat:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --sidebar-bg: rgba(18, 18, 18, 0.9);
+    --card-bg: rgba(18, 18, 18, 0.9);
+}
+
+.light-mode {
+    --bg-color: #f0f0f0;
+    --text-color: #121212;
+    --sidebar-bg: rgba(240, 240, 240, 0.9);
+    --card-bg: rgba(255, 255, 255, 0.9);
+}
+
+body {
+    display: flex;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+    overflow-x: hidden;
+    background-color: var(--bg-color);
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    background-color: var(--sidebar-bg);
+    z-index: 1000;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+    animation: slideIn 0.5s ease-out;
+    transform: translateX(-100%);
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+.sidebar-content {
+    padding: 20px;
+}
+
+.linux-prompt {
+    position: fixed;
+    top: 20px;
+    left: 60px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.linux-prompt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.prompt-symbol {
+    color: #0f0;
+}
+
+.prompt-text {
+    color: #fff;
+}
+
+.prompt-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background-color: #fff;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.sidebar-item {
+    display: block;
+    color: #a0a0a2;
+    text-decoration: none;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.sidebar-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+}
+
+.sidebar-item i {
+    margin-right: 10px;
+}
+
+.header-mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.intro-header {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.moon {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: url('https://images.creativefabrica.com/products/previews/2023/10/27/3nN1bixM5/2XLICX9OaqZJEHcq4e6W9UQIQS0-desktop.jpg') no-repeat center center;
+    background-size: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    z-index: 1002;
+}
+
+.light-effect {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(ellipse at top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 0;
+    transition: margin-left 0.3s ease-in-out;
+    padding: 20px;
+}
+
+.main-content.sidebar-active {
+    margin-left: 250px;
+}
+
+.htb-header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.htb-header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    color: #9FEF00;
+    text-shadow: 0 0 10px rgba(159, 239, 0, 0.5);
+}
+
+.htb-logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.machine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.machine-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.machine-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.machine-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: #9FEF00;
+    margin-bottom: 10px;
+}
+
+.machine-card p {
+    color: #a0a0a2;
+    font-size: 0.9rem;
+}
+
+.difficulty {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.easy { background-color: #4CAF50; color: white; }
+.medium { background-color: #FFC107; color: black; }
+.hard { background-color: #F44336; color: white; }
+
+.sidebar-toggle-btn {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1001;
+    background-color: var(--sidebar-bg);
+    color: var(--text-color);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sidebar-toggle-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--sidebar-bg);
+    color: var(--text-color);
+    margin-top: 40px;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+</style>
+</head>
+<body>
+    <div class="moon"></div>
+    <div class="light-effect"></div>
+
+    <button id="sidebar-toggle" class="sidebar-toggle-btn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="sidebar">
+        <div class="sidebar-content">
+            <a href="#" class="sidebar-item"><i class="fas fa-home"></i> Home</a>
+            <a href="#" class="sidebar-item"><i class="fas fa-laptop-code"></i> Machines</a>
+            <a href="#" class="sidebar-item"><i class="fas fa-flag"></i> Challenges</a>
+            <a href="#" class="sidebar-item"><i class="fas fa-chart-line"></i> Progress</a>
+            <a href="#" class="sidebar-item"><i class="fas fa-cog"></i> Settings</a>
+            <a href="#" class="sidebar-item" id="theme-toggle">
+                <i class="fas fa-adjust"></i> Toggle Theme
+            </a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="linux-prompt mb-4" onclick="window.location.href='/'">
+            <span class="prompt-symbol">$</span>
+            <span class="prompt-text">cd /home/snoody/htb</span>
+            <span class="prompt-cursor"></span>
+        </div>
+
+        <div class="htb-header">
+            <img src="https://www.hackthebox.com/images/logo-htb.svg" alt="HackTheBox Logo" class="htb-logo">
+            <h1>HackTheBox Write-Ups</h1>
+        </div>
+
+        <div class="machine-grid">
+            <div class="machine-card">
+                <h3>Sea</h3>
+                <p>Máquina que explora vulnerabilidades en servicios web y gestión de sistemas. Ideal para practicar enumeración y explotación de configuraciones débiles.</p>
+                <span class="difficulty easy">Easy</span>
+            </div>
+            <!-- <div class="machine-card">
+                <h3>Jerry</h3>
+                <p>Windows machine with misconfigured Apache Tomcat server.</p>
+                <span class="difficulty easy">Easy</span>
+            </div>
+            <div class="machine-card">
+                <h3>Bashed</h3>
+                <p>Linux machine with a web-based shell and sudo misconfiguration.</p>
+                <span class="difficulty easy">Easy</span>
+            </div>
+            <div class="machine-card">
+                <h3>Nibbles</h3>
+                <p>Linux machine with a vulnerable blog application.</p>
+                <span class="difficulty easy">Easy</span>
+            </div>
+            <div class="machine-card">
+                <h3>Beep</h3>
+                <p>Linux machine running Elastix with multiple vulnerabilities.</p>
+                <span class="difficulty easy">Easy</span>
+            </div>
+            <div class="machine-card">
+                <h3>Optimum</h3>
+                <p>Windows machine with vulnerable HttpFileServer.</p>
+                <span class="difficulty easy">Easy</span>
+            </div>
+            <div class="machine-card">
+                <h3>Poison</h3>
+                <p>FreeBSD machine with LFI and VNC exploitation.</p>
+                <span class="difficulty medium">Medium</span>
+            </div>
+            <div class="machine-card">
+                <h3>Jarvis</h3>
+                <p>Linux machine with SQL injection and command injection vulnerabilities.</p>
+                <span class="difficulty medium">Medium</span>
+            </div>
+            <div class="machine-card">
+                <h3>Hawk</h3>
+                <p>Linux machine featuring H2 database exploitation.</p>
+                <span class="difficulty medium">Medium</span>
+            </div>
+            <div class="machine-card">
+                <h3>Falafel</h3>
+                <p>Linux machine with SQL truncation and file upload vulnerabilities.</p>
+                <span class="difficulty hard">Hard</span>
+            </div>
+            <div class="machine-card">
+                <h3>Inception</h3>
+                <p>Linux machine with multiple pivots and WebSocket exploitation.</p>
+                <span class="difficulty hard">Hard</span>
+            </div>
+            <div class="machine-card">
+                <h3>Querier</h3>
+                <p>Windows machine featuring MSSQL and GPP password exploitation.</p>
+                <span class="difficulty medium">Medium</span>
+            </div> -->
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 Snoody's Cybersecurity Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const sidebar = document.querySelector('.sidebar');
+        const mainContent = document.querySelector('.main-content');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            mainContent.classList.toggle('sidebar-active');
+        });
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
+        });
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+        }
+
+        document.addEventListener('click', (event) => {
+            if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
+                sidebar.classList.remove('active');
+                mainContent.classList.remove('sidebar-active');
+            }
+        });
+
+        const sidebarItems = document.querySelectorAll('.sidebar-item');
+        sidebarItems.forEach((item, index) => {
+            item.style.animationDelay = `${0.1 * (index + 1)}s`;
+        });
+    });
+    </script>
+</body>
+</html>
