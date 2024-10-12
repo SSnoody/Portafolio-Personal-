@@ -1,0 +1,629 @@
+<html><head><base href="/scripts/menuscripts.html"><title>Snoody's Scripts</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Space+Mono&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css" /><style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: #e0e0e0;
+            background-color: #121212;
+            overflow: hidden;
+        }
+        .container-fluid {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            padding: 20px;
+            background-color: rgba(30, 30, 30, 0.9);
+            text-align: center;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: rgba(30, 30, 30, 0.9);
+            padding: 20px;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: rgba(24, 24, 24, 0.9);
+        }
+        .script-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .script-list li {
+            margin-bottom: 15px;
+        }
+        .script-list a {
+            color: #e0e0e0;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        .script-list a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        pre {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        code {
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        h1, h2 {
+            font-weight: 600;
+            color: #ffffff;
+        }
+        .glow {
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        section {
+            animation: fadeIn 1s ease-in-out;
+            background-color: rgba(40, 40, 40, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .fa-icon {
+            margin-right: 10px;
+            color: #4CAF50;
+        }
+        .copy-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: #4caf4f00;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .copy-button:hover {
+            background-color: #8aaf8c62;
+        }
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: none;
+        }
+        .linux-prompt {
+    position: fixed;
+    top: 55px;
+    left: 60px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.linux-prompt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.prompt-symbol {
+    color: #0f0;
+}
+
+.prompt-text {
+    color: #fff;
+}
+
+.prompt-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background-color: #fff;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+    </style></head><body>
+        <div class="main-content">
+            <div class="linux-prompt mb-4" onclick="window.location.href='/'">
+                <span class="prompt-symbol">$</span>
+                <span class="prompt-text">cd /home/snoody/Scripts</span>
+                <span class="prompt-cursor"></span>
+            </div>
+    <div class="container-fluid">
+        <header class="header">
+            <h1 class="glow">Snoody's Scripts</h1>
+        </header>
+        <div class="content">
+            <div class="sidebar">
+                <ul class="script-list">
+                    <li><a href="#puerto-scanner"><i class="fas fa-network-wired fa-icon"></i> Puerto Scanner con Nmap</a></li>
+                    <li><a href="#script2"><i class="fas fa-user fa-icon"></i></i> Reconocimiento Facial</a></li>
+                    <li><a href="#script3"><i class="fas fa-wifi fa-icon"></i></i> Automatización Router</a></li>
+                    <li><a href="#script4"><i class="fas fa-envelope fa-icon"></i></i> Envio de eMails</a></li>
+                </ul>
+            </div>
+            <div class="main-content">
+                <section id="puerto-scanner">
+                    <h2 class="glow">Puerto Scanner con Nmap</h2>
+                    <p>Este script en Python utiliza la biblioteca Nmap para escanear puertos en una dirección IP objetivo. Además, envía los resultados por correo electrónico.</p>
+                    <pre><code class="language-python">
+import nmap
+from CorreoElectronico import CorreoElectronico
+import re
+
+class P6:
+    def __init__(self, ipObjetivo):
+        self.ipObjetivo = ipObjetivo
+        self.nm = nmap.PortScanner()
+        self.puertosAbiertos = "-p "
+        self.destinatarioCorreo = ""
+
+    def validarIP(self):
+        pattern = re.compile(r"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$")
+        if not pattern.match(self.ipObjetivo):
+            raise ValueError(f"La IP {self.ipObjetivo} no es válida.")
+
+    def escanearPuertos(self):
+        try:
+            self.validarIP()
+            resultados = self.nm.scan(hosts=self.ipObjetivo, arguments="-sT -n -Pn -T4")
+            return resultados
+        except ValueError as e:
+            print(e)
+            return None
+        except Exception as e:
+            print(f"Error al escanear puertos: {e}")
+            return None
+
+    def generarInforme(self, resultados):
+        # Implementación del método generarInforme
+
+    def obtenerDestinatarioCorreo(self):
+        # Implementación del método obtenerDestinatarioCorreo
+
+def enviarInformePorCorreo(ipObjetivo):
+    scanner = P6(ipObjetivo)
+    resultados = scanner.escanearPuertos()
+    informe = scanner.generarInforme(resultados)
+    
+    scanner.obtenerDestinatarioCorreo()
+    
+    asunto = f"Informe de escaneo de puertos para {ipObjetivo}"
+    mensaje = informe
+
+    correo = CorreoElectronico()
+    correo.enviarCorreo(scanner.destinatarioCorreo, asunto, mensaje)
+
+# Ejemplo de uso
+ipObjetivo = input("[+] IP Objetivo ==> ")
+enviarInformePorCorreo(ipObjetivo)
+                    </code><button class="copy-button" onclick="copyToClipboard(this)"><i class="fas fa-copy"></i></button></pre>
+                </section>
+                
+                <section id="script2">
+                    <h2 class="glow">Reconocimiento Facial- Alertas Mail</h2>
+                    <p>Este script utiliza pandas y matplotlib para realizar un análisis básico de datos y generar visualizaciones.</p>
+                    <pre><code class="language-python">
+import cv2
+import face_recognition
+import os
+from datetime import datetime
+from CorreoElectronico import CorreoElectronico
+import numpy
+
+class P1:
+    def __init__(self):
+        try:
+            self.detectorRostro = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
+            self.rutaImages = "images"
+            self.correoDestinatario = " " #U can delete the part of sending the email.
+            self.encodingsRostros = []
+            self.nombresRostros = []
+            self.intentos = 0
+            self.detallesIntentos = []
+            print("Iniciando sistema...")
+            self.cargarRostros()
+            print("Rostros cargados")
+        except:
+            print(f"Error al inicializar el sistema")
+
+    def cargarRostros(self):
+        try:
+            rostros = [
+                {"nombre": "#Person name", "imagen": "images/name_2.jpeg"},
+                {"nombre": "#Person name", "imagen": "images/name2_1.jpeg"},    #U can delete or add more recognition faces
+                {"nombre": "#Person name", "imagen": "images/name3_1.jpeg"},
+                {"nombre": "#Person name", "imagen": "images/name4_2.jpeg"}
+            ]
+            for rostro in rostros:
+                if os.path.exists(rostro["imagen"]):
+                    imagen = face_recognition.load_image_file(rostro["imagen"])
+                    encoding = face_recognition.face_encodings(imagen)
+                    if encoding:
+                        self.encodingsRostros.append(encoding[0])
+                        self.nombresRostros.append(rostro["nombre"])
+                        print(f"Rostro de {rostro['nombre']} cargado")
+                    else:
+                        print(f"No se detectó ningún rostro en la imagen {rostro['nombre']}")
+                else:
+                    print(f"No se encontró el archivo {rostro['imagen']}")
+        except:
+            print(f"Error al cargar los rostros")
+
+    def reconocerImagen(self, imagen):
+        try:
+            rgbFrame = cv2.cvtColor(imagen, cv2.COLOR_BGR2RGB)
+            ubicacionRostros = face_recognition.face_locations(rgbFrame)
+            encodingsRostros = face_recognition.face_encodings(rgbFrame, ubicacionRostros)
+
+            nombRostros = []
+            for encodingRostro in encodingsRostros:
+                if len(self.encodingsRostros) == 0:
+                    print("No se han cargado encodings de caras conocidas.")
+                    continue
+
+                coincidencias = face_recognition.compare_faces(self.encodingsRostros, encodingRostro)
+                nombre = "Desconocido"
+                distanciaRostro = face_recognition.face_distance(self.encodingsRostros, encodingRostro)
+                mejorCoincidencia = numpy.argmin(distanciaRostro)
+                if coincidencias[mejorCoincidencia]:
+                    nombre = self.nombresRostros[mejorCoincidencia]
+                nombRostros.append(nombre)
+                if nombre == "Desconocido":
+                    self.intentos += 1
+                    self.detallesIntentos.append(f"Intento fallido a las {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+                    if self.intentos >= 3:
+                        self.enviarCorreo()
+            return nombRostros
+        except:
+            print(f"Error al reconocer la imagen")
+            return []
+
+    def reconocerRostro(self):
+        try:
+            captura = cv2.VideoCapture(0)
+            if not captura.isOpened():
+                print("No se puede acceder a la cámara")
+                return
+            while True:
+                ret, frame = captura.read()
+                if not ret:
+                    print("No se pudo capturar la imagen correctamente")
+                    break
+
+                nomRostros = self.reconocerImagen(frame)
+
+                for (top, right, bottom, left), nombre in zip(face_recognition.face_locations(frame), nomRostros):
+                    cv2.rectangle(frame, (left, top), (right, bottom), (255, 0, 0), 2)
+                    cv2.putText(frame, nombre, (left, top - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36, 255, 12), 2)
+                cv2.imshow('Sistema de reconocimiento facial', frame)
+                if cv2.waitKey(1) & 0xFF == ord('x'):
+                    break
+            captura.release()
+            cv2.destroyAllWindows()
+        except:
+            print(f"Error al realizar el reconocimiento facial")
+
+    def enviarCorreo(self):
+        try:
+            correo = CorreoElectronico()
+            asunto = "Notificación de intentos fallidos de reconocimiento facial"
+            mensaje = "Se han detectado 3 intentos fallidos de reconocimiento facial.\n\n"
+            mensaje += "Detalles de los intentos fallidos:\n"
+            for detalle in self.detallesIntentos:
+                mensaje += f"{detalle}\n"
+            correo.enviarCorreo(self.correoDestinatario, asunto, mensaje)
+            self.intentosFallidos = 0
+            self.detallesIntentos.clear()
+        except:
+            print(f"Error al enviar el correo electrónico")
+
+objReconocer = P1()
+objReconocer.reconocerRostro()
+                    </code><button class="copy-button" onclick="copyToClipboard(this)"><i class="fas fa-copy"></i></button></pre>
+                </section>
+                
+                <section id="script3">
+                    <h2 class="glow">Automatización de Configuración Router</h2>
+                    <p>Este script utiliza Selenium para automatizar la configuracion basica de un Router</p>
+                    <pre><code class="language-python">
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+
+class P2:
+    def __init__(self, urlLogin):
+        self.driver = webdriver.Firefox()
+        self.driver.maximize_window()
+        self.urlLogin = urlLogin
+
+    def ingresarDatosYEsperar(self, campo, datos, tiempoEspera=4):
+        campo.clear()
+        time.sleep(tiempoEspera)
+        campo.send_keys(datos)
+
+    def imprimir(self, msj):
+        print(msj)
+
+    def iniciarSesion(self, nombreUsuario, contrasena):
+        while True:
+            if nombreUsuario != "" or contrasena != "": #Credenciales de inicio de sesion de tu pagina default del router
+                nombreUsuario = input("Las credenciales son incorrectas. Ingrese el nombre de usuario del router: ")
+                contrasena = input("Ingrese la contraseña del router: ")
+            else:
+                break
+
+        self.driver.get(self.urlLogin)
+        try:
+            campoNombreUsuario = WebDriverWait(self.driver, 10).until(
+                EC.presence_of_element_located((By.ID, 'UserName'))
+            )
+            campoContrasena = self.driver.find_element(By.ID, 'Password')
+            self.ingresarDatosYEsperar(campoNombreUsuario, nombreUsuario)
+            self.ingresarDatosYEsperar(campoContrasena, contrasena)
+            botonIniciarSesion = self.driver.find_element(By.CSS_SELECTOR, "input[value='Apply']")
+            time.sleep(4)
+            botonIniciarSesion.click()
+            self.imprimir("Inicio de sesión exitoso")
+        except Exception as e:
+            self.imprimir(f"Ocurrió un error durante el inicio de sesión: {e}")
+            return False
+        return True
+
+    def validarContrasenaWifi(self, contrasena):
+        if not (8 <= len(contrasena) <= 63):
+            raise ValueError("La contraseña debe tener entre 8 y 63 caracteres.")
+        if not all(c.isascii() for c in contrasena):
+            raise ValueError("La contraseña debe contener solo caracteres ASCII.")
+
+    def configurarWifi(self, nuevoSsid, nuevaContrasenaWifi):
+        while True:
+            try:
+                self.validarContrasenaWifi(nuevaContrasenaWifi)
+                break
+            except ValueError as e:
+                self.imprimir(e)
+                nuevaContrasenaWifi = input("Ingrese una nueva contraseña válida para la red Wi-Fi: ")
+
+        try:
+            WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.ID, 'WirelessNetworkName'))
+            )
+            campoSsid = self.driver.find_element(By.ID, 'WirelessNetworkName')
+            self.ingresarDatosYEsperar(campoSsid, nuevoSsid)
+            campoContrasenaWifi = self.driver.find_element(By.ID, 'WifiPassword')
+            self.ingresarDatosYEsperar(campoContrasenaWifi, nuevaContrasenaWifi)
+            botonAplicar = self.driver.find_element(By.CSS_SELECTOR, "input[value='Aplicar']")
+            time.sleep(4)
+            botonAplicar.click()
+            self.imprimir("Configuración Wi-Fi aplicada con éxito")
+            time.sleep(10)
+        except Exception as e:
+            self.imprimir(f"Ocurrió un error durante la configuración de Wi-Fi: {e}")
+
+    def configurarCanalWifi(self):
+        try:
+            self.driver.execute_script("window.location.href='router.html?wifi_basic'")
+            WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.ID, 'Channel'))
+            )
+
+            while True:
+                try:
+                    canal = int(input("Ingrese el canal de transmisión (1-13): "))
+                    if 1 <= canal <= 13:
+                        break
+                    else:
+                        raise ValueError("El canal debe estar entre 1 y 13.")
+                except ValueError as e:
+                    self.imprimir(e)
+
+            campoCanal = self.driver.find_element(By.ID, 'Channel')
+            opcionesCanal = campoCanal.find_elements(By.TAG_NAME, 'option')
+            for opcion in opcionesCanal:
+                if opcion.get_attribute('value') == str(canal):
+                    opcion.click()
+                    break
+
+            botonAplicar = self.driver.find_element(By.CSS_SELECTOR, "input[value='Aplicar']")
+            time.sleep(4)
+            botonAplicar.click()
+            self.imprimir("Configuración del canal Wi-Fi aplicada con éxito")
+        except Exception as e:
+            self.imprimir(f"Ocurrió un error durante la configuración del canal Wi-Fi: {e}")
+
+    def configurarLan(self, nuevaIp, nuevaMascaraSubred):
+        try:
+            self.driver.execute_script("window.location.href='router.html?lan_settings'")
+            WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.ID, 'IPAddress'))
+            )
+            campoIpLan = self.driver.find_element(By.ID, 'IPAddress')
+            self.ingresarDatosYEsperar(campoIpLan, nuevaIp)
+            campoMascaraSubredLan = self.driver.find_element(By.ID, 'SubnetMask')
+            self.ingresarDatosYEsperar(campoMascaraSubredLan, nuevaMascaraSubred)
+            botonAplicar = self.driver.find_element(By.CSS_SELECTOR, "input[value='Aplicar']")
+            time.sleep(4)
+            botonAplicar.click()
+            self.imprimir("Configuración de LAN aplicada con éxito")
+            time.sleep(10)
+        except Exception as e:
+            self.imprimir(f"Ocurrió un error durante la configuración de LAN: {e}")
+
+    def configurarWanEstatica(self, nuevaGateway):
+        try:
+            self.driver.execute_script("window.location.href='router.html?wan_static'")
+            WebDriverWait(self.driver, 20).until(
+                EC.presence_of_element_located((By.ID, 'EnableStatic'))
+            )
+            checkboxHabilitarEstatica = self.driver.find_element(By.ID, 'EnableStatic')
+            if not checkboxHabilitarEstatica.is_selected():
+                checkboxHabilitarEstatica.click()
+            time.sleep(4)
+            campoGateway = self.driver.find_element(By.ID, 'GatewayAddress')
+            self.ingresarDatosYEsperar(campoGateway, nuevaGateway)
+            botonAplicar = self.driver.find_element(By.CSS_SELECTOR, "input[value='Aplicar']")
+            time.sleep(4)
+            botonAplicar.click()
+            self.imprimir("Configuración WAN estática aplicada con éxito")
+        except Exception as e:
+            self.imprimir(f"Ocurrió un error durante la configuración WAN estática: {e}")
+
+urlLogin = "http://192.168.0.1/router.html"
+p2 = P2(urlLogin)
+
+try:
+    while True:
+        try:
+            nombreUsuario = input("Ingrese el nombre de usuario del router: ")
+            contrasena = input("Ingrese la contraseña del router: ")
+
+            if p2.iniciarSesion(nombreUsuario, contrasena):
+                break
+        except ValueError as e:
+            p2.imprimir(e)
+
+    nuevoSsid = input("Ingrese el nuevo nombre de la red (SSID): ")
+    nuevaContrasenaWifi = input("Ingrese la nueva contraseña de la red Wi-Fi: ")
+    p2.configurarWifi(nuevoSsid, nuevaContrasenaWifi)
+
+    p2.configurarCanalWifi()
+
+    nuevaIp = input("Ingrese la nueva dirección IP del router: ")
+    nuevaMascaraSubred = input("Ingrese la nueva máscara de subred del router: ")
+    p2.configurarLan(nuevaIp, nuevaMascaraSubred)
+
+    nuevaGateway = input("Ingrese la nueva dirección de gateway: ")
+    p2.configurarWanEstatica(nuevaGateway)
+except ValueError as e:
+    p2.imprimir(e)
+
+
+                    </code><button class="copy-button" onclick="copyToClipboard(this)"><i class="fas fa-copy"></i></button></pre>
+                </section>
+                <section id="script4">
+                    <h2 class="glow">Script para enviar Correos </h2>
+                    <p>Este script utiliza SMTP para Enviar Correos utilizando Office 365</p>
+                    <pre><code class="language-python">
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
+import os
+
+class CorreoElectronico:
+    def __init__(self):
+        self.servidorSMTP = "smtp.office365.com"
+        self.puerto = 587
+        self.usuario = "" #email, example: hello123@hotmail.com
+        self.contraseña = ""  # email passwd
+
+    def enviarCorreo(self, destinatario, asunto, mensaje, archivoAdjunto=None):
+        msg = MIMEMultipart()
+        msg['From'] = self.usuario
+        msg['To'] = destinatario
+        msg['Subject'] = asunto
+
+        msg.attach(MIMEText(mensaje, 'plain'))
+
+        if archivoAdjunto:
+            if not os.path.exists(archivoAdjunto):
+                print(f"Error: No se encontró el archivo {archivoAdjunto} para adjuntar.")
+                return
+            with open(archivoAdjunto, 'rb') as f:
+                parte = MIMEApplication(f.read(), Name=os.path.basename(archivoAdjunto))
+                parte['Content-Disposition'] = f'attachment; filename="{os.path.basename(archivoAdjunto)}"'
+                msg.attach(parte)
+
+        try:
+            servidor = smtplib.SMTP(self.servidorSMTP, self.puerto)
+            servidor.starttls()
+            servidor.login(self.usuario, self.contraseña)
+            servidor.sendmail(self.usuario, destinatario, msg.as_string())
+            servidor.quit()
+            print("Correo enviado correctamente")
+        except smtplib.SMTPAuthenticationError:
+            print("Error: Falló la autenticación, verifica tu usuario y contraseña.")
+        except Exception as e:
+            print(f"Error al enviar el correo: {str(e)}")
+
+
+                    </code><button class="copy-button" onclick="copyToClipboard(this)"><i class="fas fa-copy"></i></button></pre>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">Copiado al portapapeles</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-python.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.script-list a').on('click', function(e) {
+                e.preventDefault();
+                var target = $(this).attr('href');
+                $('.main-content').animate({
+                    scrollTop: $(target).offset().top
+                }, 500);
+            });
+        });
+
+        function copyToClipboard(button) {
+            const pre = button.closest('pre');
+            const code = pre.querySelector('code');
+            const text = code.innerText;
+
+            navigator.clipboard.writeText(text).then(() => {
+                showToast();
+            }, (err) => {
+                console.error('Error al copiar el texto: ', err);
+            });
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body></html>
