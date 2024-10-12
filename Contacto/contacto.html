@@ -1,0 +1,218 @@
+<html>
+<head>
+    <base href="/Contacto/contacto.html">
+    <title>Contact - Snoody</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #e0e0e0;
+            --secondary-color: #3498db;
+            --text-color: #f4f4f4;
+            --bg-color: rgba(0, 0, 0, 0.7);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #bg-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px; /* Ancho máximo más grande */
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            margin: 50px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-around; /* Espacio uniforme entre los elementos */
+            width: 100%; /* Ancho completo */
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas más pequeñas */
+        }
+
+        .info-item {
+            flex: 1 1 200px; /* Flexibilidad y tamaño mínimo */
+            margin: 10px; /* Espacio entre elementos */
+            padding: 20px; /* Espaciado interno */
+            background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco transparente */
+            border-radius: 8px; /* Bordes redondeados */
+            text-align: center; /* Centrar texto */
+            text-decoration: none; /* Sin subrayado en el texto del enlace */
+            color: white; /* Color del texto */
+            transition: background-color 0.3s, transform 0.3s; /* Transición suave para el hover */
+        }
+
+        .info-item:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Efecto de hover más claro */
+            transform: scale(1.05); /* Escalar ligeramente en hover */
+        }
+
+        .info-item i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .info-item h3 {
+            font-size: 1.5rem; /* Aumentar tamaño de fuente del encabezado */
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .info-item p, .info-item a {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .info-item a:hover {
+            color: var(--secondary-color);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            .info-item {
+                flex: 1 1 100%; /* Cambia el tamaño a 100% en pantallas pequeñas */
+            }
+        }
+        .linux-prompt {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.linux-prompt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.prompt-symbol {
+    color: #0f0;
+}
+
+.prompt-text {
+    color: #fff;
+}
+
+.prompt-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background-color: #fff;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+    </style>
+</head>
+<body>
+    <div class="linux-prompt" onclick="window.location.href='/index.html';">
+        <span class="prompt-symbol">$</span>
+        <span class="prompt-text">cd /home/ContactMe</span>
+        <span class="prompt-cursor"></span>
+    </div>
+    <video autoplay muted loop id="bg-video">
+        <source src="https://cdn.pixabay.com/video/2023/07/24/173031-848232067_large.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="overlay"></div>
+    <div class="container">
+        <header>
+            <h1>Contact Me</h1>
+            <p class="subtitle">Let's connect and create something amazing together!</p>
+        </header>
+
+        <div class="contact-info">
+            <a href="mailto:@gmail.com" class="info-item">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p>@gmail.com</p>
+            </a>
+            <a href="https://discord.com" class="info-item"> <!-- Cambia la URL a tu enlace de Discord -->
+                <i class="fab fa-discord"></i>
+                <h3>Discord</h3>
+                <p>snoody.</p>
+            </a>
+            <a href="https://www.linkedin.com/in/" target="_blank" class="info-item">
+                <i class="fab fa-linkedin"></i>
+                <h3>LinkedIn</h3>
+                <p>Alejandro</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
