@@ -1,0 +1,1016 @@
+<html><head><base href="index.html"><title>Portafolio de Ciberseguridad Profesional - Snoody</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&family=Montserrat:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet"><style>
+:root {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --sidebar-bg: rgba(18, 18, 18, 0.9);
+    --card-bg: rgba(18, 18, 18, 0.9);
+}
+
+.light-mode {
+    --bg-color: #f0f0f0;
+    --text-color: #121212;
+    --sidebar-bg: rgba(240, 240, 240, 0.9);
+    --card-bg: rgba(255, 255, 255, 0.9);
+}
+
+body {
+    display: flex;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+    overflow-x: hidden;
+    background-color: var(--bg-color);
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 250px;
+    background-color: var(--sidebar-bg);
+    z-index: 1000;
+    overflow-y: auto;
+    transition: transform 0.3s ease-in-out;
+    animation: slideIn 0.5s ease-out;
+    transform: translateX(-100%);
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+.sidebar-content {
+    padding: 20px;
+}
+
+.linux-prompt {
+    position: fixed;
+    top: 20px;
+    left: 60px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.linux-prompt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.prompt-symbol {
+    color: #0f0;
+}
+
+.prompt-text {
+    color: #fff;
+}
+
+.prompt-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background-color: #fff;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.sidebar-item {
+    display: block;
+    color: #a0a0a2;
+    text-decoration: none;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.sidebar-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+}
+
+.sidebar-item i {
+    margin-right: 10px;
+}
+
+.header-mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.intro-header {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.moon {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: url('https://images.creativefabrica.com/products/previews/2023/10/27/3nN1bixM5/2XLICX9OaqZJEHcq4e6W9UQIQS0-desktop.jpg') no-repeat center center;
+    background-size: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    z-index: 1002;
+}
+
+.light-effect {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(ellipse at top, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.snoody-text {
+    position: relative;
+    z-index: 1;
+}
+
+.snoody-text h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    transition: text-shadow 0.3s ease;
+}
+
+.snoody-text h1:hover {
+    text-shadow: 0 0 20px rgba(255,255,255,1);
+}
+
+.snoody-text h2 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: #a0a0a2;
+}
+
+#snoody-logo {
+    display: block;
+    margin: 0 auto 20px;
+    transition: transform 0.3s ease;
+}
+
+#snoody-logo:hover {
+    transform: rotate(360deg);
+}
+
+.socials {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 50px;
+    height: 50px;
+    transition: all 0.3s ease;
+}
+
+.circle:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 0;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.main-content.sidebar-active {
+    margin-left: 250px;
+}
+
+.content {
+    margin: 80px 0;
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-arrow {
+    position: absolute;
+    bottom: -250px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: var(--text-color);
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-5px) translateX(-50%);
+    }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#proyectos {
+    padding: 80px 0;
+    background-color: #1a1a1a;
+    position: relative;
+}
+
+#proyectos h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-align: center;
+    color: var(--text-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+@media (min-width: 540px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 960px) {
+    .card-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+.col-md-6 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#sobre-mi, #certificaciones {
+  margin-bottom: 30px;
+}
+
+#sobre-mi .card, #certificaciones .card {
+  height: 300px;
+}
+.card {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card:before {
+    content: '';
+    display: block;
+    padding-bottom: 150%;
+}
+
+.background {
+    background-position: center;
+    background-size: cover;
+    border-radius: 15px;
+    filter: brightness(0.8) saturate(1.2) contrast(0.85);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: all 0.3s ease;
+}
+
+.card:hover .background {
+    transform: scale(1.05);
+    filter: brightness(1) saturate(1.2) contrast(1);
+}
+
+.card-grid:hover > .card:not(:hover) .background {
+    filter: brightness(0.5) saturate(0.8) contrast(1.2) blur(3px);
+}
+
+.card-grid:hover > .card:not(:hover) .content {
+    opacity: 0.7;
+}
+
+.card .content {
+    padding: 24px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    transition: all 0.3s ease;
+}
+
+.category {
+    color: #e1e1e1;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.heading {
+    color: var(--text-color);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+footer {
+    position: relative;
+    padding: 30px 0;
+    background-color: #0a0a0a;
+    text-align: center;
+    margin-top: 80px;
+}
+
+footer p {
+    color: #a0a0a2;
+    font-size: 0.9rem;
+}
+
+/* Search icon styles */
+.search-toggle-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1001;
+    background-color: var(--sidebar-bg);
+    color: var(--text-color);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-toggle-btn:hover {
+    transform: scale(1.1) rotate(10deg);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tag-toggle-btn {
+    position: fixed;
+    top: 10px;
+    right: 60px;
+    z-index: 1001;
+    background-color: var(--sidebar-bg);
+    color: var(--text-color);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tag-toggle-btn:hover {
+    transform: scale(1.1) rotate(10deg);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.contact-toggle-btn {
+    position: fixed;
+    top: 10px;
+    right: 110px;
+    z-index: 1001;
+    background-color: var(--sidebar-bg);
+    color: var(--text-color);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-toggle-btn:hover {
+    transform: scale(1.1) rotate(10deg);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.search-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-container {
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+}
+
+#search-input {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.search-close-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Scroll Reveal Animation */
+.reveal {
+    position: relative;
+    opacity: 0;
+    transition: all 0.8s ease-in-out;
+}
+
+.reveal.active {
+    opacity: 1;
+}
+
+.active.fade-bottom {
+    animation: fade-bottom 0.5s ease-in;
+}
+
+.active.fade-left {
+    animation: fade-left 0.5s ease-in;
+}
+
+.active.fade-right {
+    animation: fade-right 0.5s ease-in;
+}
+
+@keyframes fade-bottom {
+    0% { transform: translateY(50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-left {
+    0% { transform: translateX(-100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fade-right {
+    0% { transform: translateX(100px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+/* Snoody Animation */
+.snoody-text h1 {
+  animation: none;
+}
+
+.sidebar-toggle-btn {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1001;
+  background-color: var(--sidebar-bg);
+  color: var(--text-color);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sidebar-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.tag-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tag-container {
+  background-color: var(--bg-color);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 80%;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.tag-btn {
+  background-color: var(--sidebar-bg);
+  color: var(--text-color);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tag-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.tag-close-btn {
+  margin-top: 20px;
+  background-color: var(--sidebar-bg);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+</style></head>
+
+<body>
+  <div class="moon"></div>
+  <div class="light-effect"></div>
+  
+  <button id="sidebar-toggle" class="sidebar-toggle-btn">
+    <i class="fas fa-bars"></i>
+  </button>
+  
+  <button id="search-toggle" class="search-toggle-btn">
+    <i class="fas fa-search"></i>
+  </button>
+
+  <button id="tag-toggle" class="tag-toggle-btn">
+    <i class="fas fa-tags"></i>
+  </button>
+
+  <a href="/Contacto/contacto.html">
+    <button id="contact-toggle" class="contact-toggle-btn">
+      <i class="fas fa-envelope"></i>
+    </button>
+  </a>
+  
+  
+  <div id="search-overlay" class="search-overlay">
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Buscar...">
+      <button id="search-close" class="search-close-btn">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+  
+  <div class="sidebar">
+    <div class="sidebar-content">
+      <!-- <a href="#experiencias" class="sidebar-item"><i class="fas fa-briefcase"></i> Experiencias</a> -->
+       <i>--</i>
+      <a href="#sobre-mi" class="sidebar-item"><i class="fas fa-user"></i> Sobre mí</a>
+      <a href="#certificaciones" class="sidebar-item"><i class="fas fa-certificate"></i> Certificaciones</a>
+      <a href="#pcb" class="sidebar-item"><i class="fas fa-microchip"></i> PCB</a>
+      <a href="#scripts" class="sidebar-item"><i class="fas fa-code"></i> Scripts</a>
+      <a href="#" class="sidebar-item" id="theme-toggle">
+        <i class="fas fa-adjust"></i> Cambiar tema
+      </a>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="linux-prompt mb-4" onclick="window.location.href='/'">
+        <span class="prompt-symbol">$</span>
+        <span class="prompt-text">cd /home/</span>
+        <span class="prompt-cursor"></span>
+    </div>
+
+    <header class="intro-header" id="intro-header">
+        <video autoplay muted loop id="video-background">
+            <source src="https://videos.pexels.com/video-files/26208555/11939278_1920_1080_60fps.mp4" type="video/mp4">
+            Tu navegador no soporta video HTML5.
+        </video>
+        <div class="header-mask"></div>
+        
+        <div class="container d-flex align-items-center justify-content-center" style="height: 100vh;">
+            <div class="text-center snoody-text">
+                <img src="https://github.com/SSnoody/logo/blob/main/logo.png?raw=true" alt="Snoody logo" id="snoody-logo" class="mb-3" style="width: 100px; height: auto;">
+                <div class="light-effect"></div>
+                <h1 class="reveal fade-bottom">Snoody</h1>
+                <h2 class="reveal fade-bottom">WriteUps, Proyectos y Más</h2>
+                <div class="socials reveal fade-bottom mt-4">
+                    <a href="https://github.com/SSnoody" target="_blank" class="circle"><i class="fab fa-github fa-lg"></i></a>
+                    <a href="https://www.linkedin.com/in/" target="_blank" class="circle"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                    <a href="" class="circle"><i class="fas fa-envelope fa-lg"></i></a>
+                </div>
+                <div class="scroll-arrow" onclick="smoothScrollTo('#proyectos')">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="proyectos" class="content">
+        <h2 class="reveal fade-bottom">Proyectos</h2>
+        <div class="container">
+            <div class="card-grid">
+                <a class="card reveal fade-left" href="/DockerLabs/WriteUps/E/Writeups/dockerlabs.html">
+                    <div class="background" style="background-image: url(https://dockerlabs.es/images/logos/logo.png)">
+                    </div>
+                    <div class="content">
+                        <p class="category">Write Up's</p>
+                        <h3 class="heading">Docker Labs</h3>
+                    </div>
+                </a>
+
+                <a class="card reveal fade-right" href="/THM/WriteUps/ejemplo1.html">
+                    <div class="background" style="background-image: url(https://store.tryhackme.com/cdn/shop/files/shopify_grey_2048x.png?v=1713795685)">
+                    </div>
+                    <div class="content">
+                        <p class="category">Write Up's</p>
+                        <h3 class="heading">THM</h3>
+                    </div>
+                </a>
+
+                <a class="card reveal fade-left" href="/HTB/ejemplo1.html">
+                    <div class="background" style="background-image: url(https://images.ctfassets.net/4qhc1xusequb/4XpoiLbo4rdn5ufaIaLBW8/ce11d7d92cc3741bd9538db5b4f61520/1641810311920.jpeg)">
+                    </div>
+                    <div class="content">
+                        <p class="category">Write Up's</p>
+                        <h3 class="heading">HTB</h3>
+                    </div>
+                </a>
+
+                <a class="card reveal fade-right" href="/Proyectos/Marauder/DIY.html">
+                    <div class="background" style="background-image: url(https://hackster.imgix.net/uploads/attachments/1138452/2020-06-03t21-36-22-1_343z-img_0421_m104cBpjD4.JPG?auto=compress%2Cformat&w=830&h=466.875&fit=min&dpr=2.625)">
+                    </div>
+                    <div class="content">
+                        <p class="category">Proyectos</p>
+                        <h3 class="heading">Maruader</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section id="experiencias" class="content">
+        <h2 class="reveal fade-bottom">Experiencias</h2>
+         Add content for Experiencias here 
+    </section> -->
+
+    
+    <section id="pcb" class="content">
+        <h2 class="reveal fade-bottom">Placas PCB</h2>
+        <div class="container">
+            <div class="card-grid">
+                <a class="card reveal fade-left" href="/PCBs/BlueJammer/BJammer.html">
+                    <div class="background" style="background-image: url('https://jlcpcb.com/api/overseas-pcb-order/v1/fileCommon/downloadCommonFile?fileAccessId=8527817618435424257')">
+                    </div>
+                    <div class="content">
+                        <p class="category">PCB</p>
+                        <h3 class="heading">BlueJammer</h3>
+                    </div>
+                </a>
+                <a class="card reveal fade-right" href="/PCBs/Marauder/Marauder.html">
+                    <div class="background" style="background-image: url('https://jlcpcb.com/api/overseas-pcb-order/v1/fileCommon/downloadCommonFile?fileAccessId=8514118970570719232')">
+                    </div>
+                    <div class="content">
+                        <p class="category">PCB</p>
+                        <h3 class="heading">Maruader</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="scripts" class="content">
+        <h2 class="reveal fade-bottom">Scripts</h2>
+        <div class="container">
+            <div class="card-grid">
+                <a class="card reveal fade-right" href="/scripts/menuscripts.html">
+                    <div class="background" style="background-image: url('https://www.maquinasvirtuales.eu/ipsoapoo/2020/04/xpython-aprendiendo-desde-cero-i-600x330.png.pagespeed.ic.iLRlJ3oOcg.png')">
+                    </div>
+                    <div class="content">
+                        <p class="category">Scripts</p>
+                        <h3 class="heading">Ver Scripts</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+            <section id="sobre-mi" class="content">
+              <h2 class="reveal fade-bottom">Sobre Mi</h2>
+              <div class="card reveal fade-right">
+                <div class="background" style="background-image: url('https://st.depositphotos.com/1032577/4274/i/950/depositphotos_42748913-stock-photo-about-me.jpg')"></div>
+                <div class="content">
+                  <p class="category">Sobre Mi</p>
+                  <h3 class="heading">Ver Sobre Mi</h3>
+                </div>
+                <a href="/Sobre mi/sobremi.html" class="stretched-link"></a>
+              </div>
+            </section>
+          </div>
+          <div class="col-md-6">
+            <section id="certificaciones" class="content">
+              <h2 class="reveal fade-bottom">Certificados</h2>
+              <div class="card reveal fade-left">
+                <div class="background" style="background-image: url('https://i.pinimg.com/1200x/f2/d0/a1/f2d0a1e67c99e05167f6cce847ccdec0.jpg')"></div>
+                <div class="content">
+                  <p class="category">Certificaciones</p>
+                  <h3 class="heading">Ver Certificaciones</h3>
+                </div>
+                <a href="/Certificaciones/Certs.html" class="stretched-link"></a>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    
+
+    <footer>
+        <p>© 2024 Snoody. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+  function smoothScrollTo(target) {
+      const element = document.querySelector(target);
+      if (element) {
+          window.scrollTo({
+              behavior: 'smooth',
+              top: element.offsetTop
+          });
+      }
+  }
+
+  // Scroll reveal animation
+  function reveal() {
+      var reveals = document.querySelectorAll(".reveal");
+      for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight;
+          var elementTop = reveals[i].getBoundingClientRect().top;
+          var elementVisible = 150;
+          if (elementTop < windowHeight - elementVisible) {
+              reveals[i].classList.add("active");
+          } else {
+              reveals[i].classList.remove("active");
+          }
+      }
+  }
+
+  window.addEventListener("scroll", reveal);
+
+  // Smooth scroll for navigation
+  document.querySelectorAll('.sidebar-item, a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          if (href) {
+              const targetId = href.split('#')[1];
+              const targetElement = document.getElementById(targetId);
+              if (targetElement) {
+                  targetElement.scrollIntoView({
+                      behavior: 'smooth'
+                  });
+              }
+          }
+      });
+  });
+
+  // Parallax effect for header
+  window.addEventListener('scroll', function() {
+      var scrollPosition = window.pageYOffset;
+      document.querySelector('.intro-header').style.backgroundPositionY = scrollPosition * 0.5 + 'px';
+  });
+
+  // Update the Snoody text hover animation
+  const snoodyText = document.querySelector('.snoody-text h1');
+  snoodyText.addEventListener('mouseover', () => {
+      snoodyText.style.textShadow = '0 0 20px rgba(255,255,255,1)';
+  });
+  snoodyText.addEventListener('mouseout', () => {
+      snoodyText.style.textShadow = '0 0 10px rgba(255,255,255,0.8)';
+  });
+
+  // Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const body = document.body;
+
+  themeToggle.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
+  });
+
+  // Check for saved theme preference
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'light') {
+      body.classList.add('light-mode');
+  }
+
+  // Contact button functionality
+  document.getElementById('contact-toggle').addEventListener('click', () => {
+      console.log('Contact button clicked');
+  });
+
+  // Tagging system for projects
+  const projects = [
+      { id: 1, name: 'Docker Labs', tags: ['write-up', 'docker'] },
+      { id: 2, name: 'THM', tags: ['write-up', 'tryhackme'] },
+      { id: 3, name: 'HTB', tags: ['write-up', 'hackthebox'] },
+      { id: 4, name: 'Maruader', tags: ['project', 'hardware'] }
+  ];
+
+  function filterProjectsByTag(tag) {
+      return projects.filter(project => project.tags.includes(tag));
+  }
+
+  function displayProjects(filteredProjects) {
+      const projectsContainer = document.querySelector('.card-grid');
+      projectsContainer.innerHTML = '';
+
+      filteredProjects.forEach(project => {
+          const projectCard = `
+              <a class="card reveal fade-left" href="#">
+                  <div class="background" style="background-image: url(project-image-url)">
+                  </div>
+                  <div class="content">
+                      <p class="category">${project.tags.join(', ')}</p>
+                      <h3 class="heading">${project.name}</h3>
+                  </div>
+              </a>
+          `;
+          projectsContainer.innerHTML += projectCard;
+      });
+  }
+
+  document.getElementById('tag-toggle').addEventListener('click', () => {
+      const tagOverlay = document.createElement('div');
+      tagOverlay.className = 'tag-overlay';
+      tagOverlay.innerHTML = `
+          <div class="tag-container">
+              <h3>Filter by Tags</h3>
+              <div class="tag-list">
+                  ${[...new Set(projects.flatMap(p => p.tags))].map(tag => 
+                      `<button class="tag-btn" data-tag="${tag}">${tag}</button>`
+                  ).join('')}
+              </div>
+              <button id="tag-close" class="tag-close-btn">Close</button>
+          </div>
+      `;
+
+      document.body.appendChild(tagOverlay);
+
+      tagOverlay.querySelectorAll('.tag-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+              const tag = btn.dataset.tag;
+              const filteredProjects = filterProjectsByTag(tag);
+              displayProjects(filteredProjects);
+              tagOverlay.remove();
+          });
+      });
+
+      document.getElementById('tag-close').addEventListener('click', () => {
+          tagOverlay.remove();
+      });
+  });
+
+  document.addEventListener('DOMContentLoaded', (event) => {
+      const snoodyLogo = document.getElementById('snoody-logo');
+      
+      snoodyLogo.addEventListener('mouseover', () => {
+          snoodyLogo.style.transform = 'rotate(360deg)';
+      });
+
+      snoodyLogo.addEventListener('mouseout', () => {
+          snoodyLogo.style.transform = 'rotate(0deg)';
+      });
+
+      const sidebar = document.querySelector('.sidebar');
+      const mainContent = document.querySelector('.main-content');
+      const sidebarToggle = document.getElementById('sidebar-toggle');
+      
+      const searchToggle = document.getElementById('search-toggle');
+      const searchOverlay = document.getElementById('search-overlay');
+      const searchClose = document.getElementById('search-close');
+      const searchInput = document.getElementById('search-input');
+
+      sidebarToggle.addEventListener('click', () => {
+          sidebar.classList.toggle('active');
+          mainContent.classList.toggle('sidebar-active');
+      });
+
+      searchToggle.addEventListener('click', () => {
+          searchOverlay.style.display = 'flex';
+          searchInput.focus();
+      });
+
+      searchClose.addEventListener('click', () => {
+          searchOverlay.style.display = 'none';
+      });
+
+      searchInput.addEventListener('keyup', (e) => {
+          if (e.key === 'Enter') {
+              console.log('Searching for:', searchInput.value);
+          }
+      });
+
+      document.addEventListener('click', (event) => {
+          if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
+              sidebar.classList.remove('active');
+              mainContent.classList.remove('sidebar-active');
+          }
+          if (!searchOverlay.contains(event.target) && !searchToggle.contains(event.target)) {
+              searchOverlay.style.display = 'none';
+          }
+      });
+
+      const sidebarItems = document.querySelectorAll('.sidebar-item');
+      sidebarItems.forEach((item, index) => {
+          item.style.animationDelay = `${0.1 * (index + 1)}s`;
+      });
+  });
+  </script>
+</body>
+</html>
