@@ -1,0 +1,198 @@
+<html><head><base href="/index.html"><title>Certificaciones - Snoody</title><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&amp;family=Montserrat:wght@400;700&amp;family=Orbitron:wght@400;700&amp;display=swap" rel="stylesheet"><style>
+:root {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --card-bg: rgba(18, 18, 18, 0.9);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+.header {
+    background-color: var(--card-bg);
+    padding: 20px 0;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+}
+
+.certification-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 50px 0;
+}
+
+.certification-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certification-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.certification-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.certification-content {
+    padding: 20px;
+}
+
+.certification-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.linux-prompt {
+    position: fixed;
+    top: 20px;
+    left: 60px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.linux-prompt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.prompt-symbol {
+    color: #0f0;
+}
+
+.prompt-text {
+    color: #fff;
+}
+
+.prompt-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background-color: #fff;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+</style></head><body>
+<header class="header">
+    <h1>Mis Certificaciones</h1>
+</header>
+
+<div class="container">
+    <div class="linux-prompt" onclick="window.location.href='index.html';">
+        <span class="prompt-symbol">$</span>
+        <span class="prompt-text">cd /home/Certs</span>
+        <span class="prompt-cursor"></span>
+    </div>
+    <div class="certification-grid">
+        <div class="certification-card reveal">
+            <img src="https://a.slack-edge.com/80588/marketing/img/icons/icon_slack_hash_colored.png" alt="Slack Basics" class="certification-image">
+            <div class="certification-content">
+                <h3 class="certification-title">Slack Basics</h3>
+            </div>
+        </div>
+
+        <div class="certification-card reveal">
+            <img src="https://accredible_temp_credential_images.s3-external-1.amazonaws.com/16931833526051763047478082868704.png?cb=1693183354153" alt="NDG Linux Unhatched" class="certification-image">
+            <div class="certification-content">
+                <h3 class="certification-title">NDG Linux Unhatched</h3>
+            </div>
+        </div>
+
+        <div class="certification-card reveal">
+            <img src="https://accredible_temp_credential_images.s3-external-1.amazonaws.com/16974283393107971217597812511826.png?cb=1697428342044" alt="Linux Essentials" class="certification-image">
+            <div class="certification-content">
+                <h3 class="certification-title">Linux Essentials</h3>
+            </div>
+        </div>
+
+        <div class="certification-card reveal">
+            <img src="https://github.com/SSnoody/logo/blob/main/cert%20ef%20set.png?raw=true" alt="EFSET English Certificate" class="certification-image">
+            <div class="certification-content">
+                <h3 class="certification-title">EFSET English Certificate</h3>
+                <p>65/100 (C1 Advanced)</p>
+            </div>
+        </div>
+
+        <div class="certification-card reveal">
+            <img src="https://accredible_temp_credential_images.s3-external-1.amazonaws.com/16930087409660261472502456283650.png?cb=1693008750645" alt="AWS Cloud Foundations Badge" class="certification-image">
+            <div class="certification-content">
+                <h3 class="certification-title">AWS Cloud Foundations Badge</h3>
+            </div>
+        </div>
+
+        <div class="certification-card reveal">
+            <img src="https://images.credly.com/size/340x340/images/2f7b0627-48a0-4894-8d46-3245bdfe0463/image.png" alt="AWS Academy Cloud Architecting Badge" class="certification-image">
+            <div class="certification-content">
+                <h3 class="certification-title">AWS Academy Cloud Architecting Badge</h3>
+            </div>
+        </div>
+        <div class="certification-card reveal">
+            <img src="https://accredible_temp_credential_images.s3-external-1.amazonaws.com/16930081065215895514159012588856.png?cb=1693008116647" alt="AWS Cloud Foundations Badge" class="certification-image">
+            <div class="certification-content">
+                <h3 class="certification-title">Curso Hacking Ético Gamificado</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+        }
+    }
+}
+
+window.addEventListener("scroll", reveal);
+window.addEventListener("load", reveal);
+</script>
+</body></html>
