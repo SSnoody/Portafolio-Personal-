@@ -1,0 +1,305 @@
+<html><head><base href="/index.html">
+<title>TryHackMe Write-Ups - Snoody's Cybersecurity Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&family=Montserrat:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --sidebar-bg: rgba(18, 18, 18, 0.9);
+    --card-bg: rgba(18, 18, 18, 0.9);
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.header {
+    background: url('https://assets.tryhackme.com/img/banners/training-for-business.png') no-repeat center center;
+    background-size: cover;
+    height: 300px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 1;
+}
+
+.content {
+    padding: 50px 0;
+}
+
+.write-up-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.write-up-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.write-up-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.write-up-card .card-body {
+    padding: 20px;
+}
+
+.write-up-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.write-up-card p {
+    font-size: 0.9rem;
+    color: #a0a0a2;
+}
+
+.difficulty {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.difficulty.easy { background-color: #4CAF50; color: white; }
+.difficulty.medium { background-color: #FFC107; color: black; }
+.difficulty.hard { background-color: #F44336; color: white; }
+
+.tags {
+    margin-top: 10px;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #2196F3;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.linux-prompt {
+    position: fixed;
+    top: 20px;
+    left: 60px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.linux-prompt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.prompt-symbol {
+    color: #0f0;
+}
+
+.prompt-text {
+    color: #fff;
+}
+
+.prompt-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background-color: #fff;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
+}
+</style>
+</head>
+<body>
+    <div class="main-content">
+        <div class="linux-prompt mb-4" onclick="window.location.href='/'">
+            <span class="prompt-symbol">$</span>
+            <span class="prompt-text">cd /home/snoody/THM</span>
+            <span class="prompt-cursor"></span>
+        </div>
+
+<header class="header">
+    <h1>TryHackMe Write-Ups</h1>
+</header>
+
+<section class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="write-up-card">
+                    <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/99c72676aab814b94e3bc350ba627b71.png" alt="Basic Pentesting">
+                    <div class="card-body">
+                        <span class="difficulty easy">Easy</span>
+                        <h3>Basic Pentesting</h3>
+                        <p>This is a machine that allows you to practice web app hacking and privilege escalation</p>
+                        <div class="tags">
+                            <span class="tag">web</span>
+                            <span class="tag">weakpass</span>
+                            <span class="tag">privesc</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="write-up-card">
+                    <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/618b3fa52f0acc0061fb0172-1718375657104" alt="Cheese CTF">
+                    <div class="card-body">
+                        <span class="difficulty easy">Easy</span>
+                        <h3>Cheese CTF</h3>
+                        <p>Inspired by the great cheese talk of THM!</p>
+                        <div class="tags">
+                            <span class="tag">CTF</span>
+                            <span class="tag">Web</span>
+                            <span class="tag">Linux</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="write-up-card">
+                    <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/11c2b861cb1add6468a32d0be7b26b44.png" alt="U.A. High School">
+                    <div class="card-body">
+                        <span class="difficulty easy">Easy</span>
+                        <h3>U.A. High School</h3>
+                        <p>Welcome to the web application of U.A., the Superhero Academy.</p>
+                        <div class="tags">
+                            <span class="tag">Linux</span>
+                            <span class="tag">PHP</span>
+                            <span class="tag">Hash</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="write-up-card">
+                    <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/8b906b3d444362152f1cd3e521aa7e4a.png" alt="c4ptur3-th3-fl4g">
+                    <div class="card-body">
+                        <span class="difficulty easy">Easy</span>
+                        <h3>c4ptur3-th3-fl4g</h3>
+                        <p>A beginner level CTF challenge</p>
+                        <div class="tags">
+                            <span class="tag">hash</span>
+                            <span class="tag">spectrogram</span>
+                            <span class="tag">Steganography</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="write-up-card">
+                    <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/97b218eed9688e9a5cbe136714b86288.jpeg" alt="FowSniff">
+                    <div class="card-body">
+                        <span class="difficulty easy">Easy</span>
+                        <h3>Fowsniff CTF</h3>
+                        <p>Hack this machine and get the flag. There are lots of hints along the way and is perfect for beginners!</p>
+                        <div class="tags">
+                            <span class="tag">linux</span>
+                            <span class="tag">Hash</span>
+                            <span class="tag">pop3</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="write-up-card">
+                    <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/f28ade2b51eb7aeeac91002d41f29c47.png" alt="Simple CTF">
+                    <div class="card-body">
+                        <span class="difficulty easy">Easy</span>
+                        <h3>Simple CTF</h3>
+                        <p>Beginner level ctf</p>
+                        <div class="tags">
+                            <span class="tag">CVE-2019-9053</span>
+                            <span class="tag">cracking</span>
+                            <span class="tag">sqli</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="write-up-card">
+                    <img src="https://tryhackme-images.s3.amazonaws.com/room-icons/eef338293d4a928420f1603870699e75.jpeg" alt="Anonforce">
+                    <div class="card-body">
+                        <span class="difficulty easy">Easy</span>
+                        <h3>Anonforce</h3>
+                        <p>boot2root machine for FIT and bsides guatemala CTF</p>
+                        <div class="tags">
+                            <span class="tag">SSH</span>
+                            <span class="tag">FTP</span>
+                            <span class="tag">john</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const writeUpCards = document.querySelectorAll('.write-up-card');
+    
+    writeUpCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px)';
+            card.style.boxShadow = '0 15px 30px rgba(0,0,0,0.3)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+        });
+    });
+});
+</script>
+</body>
+</html>
