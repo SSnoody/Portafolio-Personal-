@@ -1,0 +1,389 @@
+<html><head><base href="/index.html">
+<title>Maruader - Proyecto PCB de Ciberseguridad Avanzado</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+  --primary-color: #0a0a0a;
+  --secondary-color: #1a1a1a;
+  --accent-color: #ff3333;
+  --text-color: #e6e6e6;
+  --link-color: #ff8080;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(45deg, #0a0a0a 25%, #1a1a1a 25%, #1a1a1a 50%, #0a0a0a 50%, #0a0a0a 75%, #1a1a1a 75%, #1a1a1a 100%);
+  background-size: 60px 60px;
+  animation: moveBackground 10s linear infinite;
+}
+
+@keyframes moveBackground {
+  0% {background-position: 0 0;}
+  100% {background-position: 40px 40px;}
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: -60px;
+}
+
+header {
+  background-color: rgba(10, 10, 10, 0.95);
+  padding: 0px 0;
+  position: fixed;
+  width: 100%;
+  top: -30;
+  z-index: 5;
+  box-shadow: 0 2px 10px rgba(255, 51, 51, 0.3);
+}
+
+h1, h2, h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--accent-color);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 0;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+nav a {
+  color: var(--link-color);
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 0.9em;
+  transition: all 0.3s ease;
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+
+nav a:hover {
+  color: var(--text-color);
+  background-color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+main {
+  margin-top: 80px;
+  padding: 20px;
+}
+
+section {
+  background-color: rgba(10, 10, 10, 0.7);
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(204, 41, 41, 0.2);
+  border: 1px solid var(--accent-color);
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  font-size: 2.2em;
+  border-bottom: 1px solid var(--accent-color);
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+h3 {
+  font-size: 1.6em;
+  margin-top: 25px;
+  color: var(--link-color);
+}
+
+.pcb-image {
+  max-width: 100%;
+  height: auto;
+  border: 3px solid var(--accent-color);
+  border-radius: 10px;
+  margin: 20px 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 51, 51, 0.5);
+}
+
+.pcb-image:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(204, 41, 41, 0.6);
+}
+
+ul, ol {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: rgba(10, 10, 10, 0.95);
+  margin-top: 40px;
+}
+
+.social-links a {
+  color: var(--link-color);
+  font-size: 1.8em;
+  margin: 0 15px;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--accent-color);
+  transform: scale(1.2);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--link-color);
+}
+
+/* Glowing effect for important elements */
+.glow {
+  text-shadow: 0 0 3px var(--accent-color), 0 0 6px var(--accent-color);
+}
+
+/* Button styling */
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  font-weight: bold;
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+.btn:hover {
+  background-color: #ff5555;
+}
+
+.linux-prompt {
+    position: fixed;
+    top: 20px;
+    left: 60px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.linux-prompt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.prompt-symbol {
+    color: #0f0;
+}
+
+.prompt-text {
+    color: #fff;
+}
+
+.prompt-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background-color: #fff;
+    animation: blink 0.7s infinite;
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  
+  h1 {
+    font-size: 2.5em;
+  }
+  
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  nav a {
+    margin: 5px 0;
+  }
+}
+</style>
+</head>
+<body>
+  <div class="linux-prompt" onclick="window.location.href='index.html';">
+    <span class="prompt-symbol">$</span>
+    <span class="prompt-text">cd /home/PCBs/Marauder</span>
+    <span class="prompt-cursor"></span>
+</div>
+  <header>
+    <div class="container">
+      <h1 class="glow">Marauder</h1>
+      <nav>
+   
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="introduccion">
+      <h2 class="glow">Introducción al Mundo Maruader</h2>
+      <p>Bienvenido al fascinante universo del Marauder, una herramienta de vanguardia basada en ESP32 que revoluciona el campo de la ciberseguridad. Este dispositivo multifacético permite realizar tanto ataques ofensivos como defensivos en redes WiFi y Bluetooth, rivalizando con dispositivos populares como el Flipper Zero.</p>
+      <p>Creado por el visionario JustCallMeKoko, el proyecto Marauder democratiza el acceso a herramientas de pentesting avanzadas, permitiendo a entusiastas y profesionales construir su propio dispositivo a un costo accesible.</p>
+      <h3>El ESP32 Marauder: Un Arsenal Digital</h3>
+      <p>El Marauder no es simplemente una herramienta; es un ecosistema completo de ciberseguridad en la palma de tu mano. Con capacidades que incluyen escaneo de redes, desconexión de dispositivos, captura de handshakes WiFi y análisis de dispositivos Bluetooth cercanos, el Marauder se posiciona como un aliado indispensable para cualquier profesional de la seguridad informática.</p>
+      <a href="https://github.com/justcallmekoko/ESP32Marauder" class="btn">Descubre Más</a>
+    </section>
+
+    <section id="materiales">
+      <h2 class="glow">Arsenal del Hacker: Materiales Necesarios</h2>
+      <p>La construcción de tu propio Marauder es un viaje emocionante. Aquí te presentamos los componentes esenciales para dar vida a esta poderosa herramienta:</p>
+      <h3>Componentes Básicos:</h3>
+      <ul>
+        <li><i class="fas fa-microchip"></i> ESP32: El cerebro de la operación</li>
+        <li><i class="fas fa-tv"></i> Pantalla Touch TFT LCD módulo ILI9341 2.4 Pulgadas (Se recomienda 2.8 pulgadas para mayor comodidad)</li>
+        <li><i class="fas fa-plug"></i> Jumpers: Para interconexiones vitales</li>
+      </ul>
+      <h3>Actualización a Versión Portátil:</h3>
+      <ul>
+        <li><i class="fas fa-battery-full"></i> TP4056: Gestor de carga de batería</li>
+        <li><i class="fas fa-bolt"></i> Mini DC-DC boost module: Para estabilidad de voltaje</li>
+        <li><i class="fas fa-battery-three-quarters"></i> Batería LiPo 3.7v, +1500mAh: Para operaciones extendidas</li>
+        <li><i class="fas fa-power-off"></i> Switch: Control de encendido/apagado</li>
+        <li><i class="fas fa-satellite"></i> Módulo GPS (Opcional): Para funcionalidades avanzadas de geolocalización</li>
+      </ul>
+      <p><em>Nota del Creador: ¿Interesado en llevar tu proyecto al siguiente nivel? Contáctame en Discord: Snoody para acceder a componentes de alta calidad a precios competitivos.</em></p>
+      
+    </section>
+
+    <section id="conexiones">
+      <h2 class="glow">Planos del Poder: Esquema de Conexiones</h2>
+      <h3>Versión Portátil Avanzada</h3>
+      <img src="https://github.com/SSnoody/logo/blob/main/IMG_3633.jpg?raw=true" alt="Esquema de conexiones versión portátil" class="pcb-image">
+      <p>Este esquema detallado muestra las conexiones para la versión portátil del Marauder, optimizada para máxima eficiencia y portabilidad.</p>
+      <h3>Diseño PCB de Vanguardia</h3>
+      <p>Explora el diseño de nuestra placa PCB especializada:</p>
+      <img src="https://jlcpcb.com/api/overseas-pcb-order/v1/fileCommon/downloadCommonFile?fileAccessId=8514118970570719232" alt="Diseño de la placa PCB para versión portátil" class="pcb-image">
+      <p><em>¿Deseas llevar tu Marauder al siguiente nivel? Contacta conmigo para obtener esta PCB personalizada y optimizada.</em></p>
+      <p>Para los entusiastas del DIY, el esquemático completo está disponible en: 
+      <a href="https://oshwlab.com/epicnuevo123/marauder-version-38-pins" class="btn">Esquemático</a>
+    </section>
+
+    <section id="flasheo">
+      <h2 class="glow">Infusión de Inteligencia: Flasheando el ESP32</h2>
+      <p>Para dar vida a tu Marauder, es crucial cargar el firmware correcto. Te presentamos dos métodos probados:</p>
+      <h3>1. Método Web: La Vía Rápida</h3>
+      <p><strong>Ventaja Principal:</strong> Simplicidad y Rapidez</p>
+      <ol>
+        <li>Navega al Web Uploader de Spacehuhn: <a href="https://esp.huhn.me" target="_blank">https://esp.huhn.me</a></li>
+        <li>Conecta tu ESP32 al puerto USB de tu computadora</li>
+        <li>Selecciona el puerto COM correspondiente en la interfaz web</li>
+        <li>Descarga los archivos necesarios del repositorio GitHub de koko</li>
+        <li>Sube los archivos en el orden correcto y comienza el proceso de flasheo</li>
+        <img src="https://github.com/SSnoody/logo/blob/main/marauder%20bin.png?raw=true" >
+      </ol>
+      <p><em>Consejo: Si encuentras problemas con una versión específica del firmware, no dudes en experimentar con versiones alternativas para encontrar la más compatible con tu hardware.</em></p>
+      
+      <h3>2. Método Arduino IDE: Para los Puristas</h3>
+      <p><strong>Desafío:</strong> Requiere más conocimientos técnicos, pero ofrece mayor control</p>
+      <p>Para los aventureros que prefieren este método, recomendamos seguir un tutorial paso a paso detallado. Este enfoque, aunque más complejo, permite una comprensión más profunda del proceso y la posibilidad de personalización avanzada.</p>
+      <a href="https://www.youtube.com/watch?v=3wcFsS64N3I&t=426s" class="btn">Tutorial Detallado</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Proyecto Maruader. Empoderando la Ciberseguridad.</p>
+      <div class="social-links">
+        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" title="Discord"><i class="fab fa-discord"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Intersection Observer for fade-in effect
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('section').forEach(section => {
+      section.style.opacity = 0;
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      observer.observe(section);
+    });
+
+    // Add glowing effect to headings on hover
+    document.querySelectorAll('h2, h3').forEach(heading => {
+      heading.addEventListener('mouseover', () => {
+        heading.classList.add('glow');
+      });
+      heading.addEventListener('mouseout', () => {
+        heading.classList.remove('glow');
+      });
+    });
+
+    // Parallax effect for background
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const background = document.body;
+      background.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
+    });
+  </script>
+</body>
+</html>
