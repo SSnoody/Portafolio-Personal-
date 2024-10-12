@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/DockerLabs/WriteUps/E/Writeups/dockerlabs.html">
+    <title>DockerLabs WriteUps</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&family=Montserrat:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+    :root {
+        --bg-color: #121212;
+        --text-color: #ffffff;
+        --sidebar-bg: rgba(18, 18, 18, 0.9);
+        --card-bg: rgba(30, 30, 30, 0.9);
+        --code-bg: #2b2b2b;
+        --link-color: #58a6ff;
+    }
+    
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+    
+    .header {
+        background: url('https://dockerlabs.es/images/logos/logo.png') no-repeat center center;
+        background-size: contain;
+        height: 150px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+    }
+    
+    .header h1 {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 3rem;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        position: relative;
+        z-index: 1;
+    }
+    
+    .content {
+        padding: 50px 0;
+    }
+    
+    .write-up-card {
+        background-color: var(--card-bg);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 30px;
+    }
+    
+    .write-up-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    
+    .write-up-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    
+    .write-up-card .card-body {
+        padding: 20px;
+    }
+    
+    .write-up-card h3 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+    
+    .write-up-card p {
+        font-size: 0.9rem;
+        color: #a0a0a2;
+    }
+    
+    .difficulty {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    
+    .difficulty.easy { background-color: #4CAF50; color: white; }
+    .difficulty.medium { background-color: #FFC107; color: black; }
+    .difficulty.hard { background-color: #F44336; color: white; }
+    
+    .tags {
+        margin-top: 10px;
+    }
+    
+    .tag {
+        display: inline-block;
+        background-color: #2196F3;
+        color: white;
+        padding: 3px 8px;
+        border-radius: 10px;
+        font-size: 0.8rem;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+    
+    .linux-prompt {
+    position: fixed;
+    top: 20px;
+    left: 60px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.linux-prompt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.prompt-symbol {
+    color: #0f0;
+}
+
+.prompt-text {
+    color: #fff;
+}
+
+.prompt-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background-color: #fff;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+    
+    footer {
+        text-align: center;
+        padding: 20px 0;
+        background-color: var(--sidebar-bg);
+        margin-top: 2rem;
+    }
+    
+    @media (max-width: 768px) {
+        .header h1 {
+            font-size: 2rem;
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <div class="linux-prompt mb-4" onclick="window.location.href='/'">
+            <span class="prompt-symbol">$</span>
+            <span class="prompt-text">cd /home/snoody/DockerLabs</span>
+            <span class="prompt-cursor"></span>
+        </div>
+    
+    <header class="header">
+        <h1>DockerLabs WriteUps</h1>
+    </header>
+    
+    <section class="content">
+        <div class="container">
+            <div class="row">
+                <!-- Write-Up 1 -->
+                <div class="col-md-4">
+                    <div class="write-up-card">
+                        <img src="https://dockerlabs.es/images/logos/logo.png" alt="DockerLabs WriteUp">
+                        <div class="card-body">
+                            <span class="difficulty very easy">Very Easy</span>
+                            <h3>BorazuwarahCTF</h3>
+                            <p>This is a machine that allows you to practice image hacking using exiftool</p>
+                            <div class="tags">
+                                <span class="tag">exiftool</span>
+                                <span class="tag">image</span>
+                                <span class="tag">privesc</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Write-Up 2
+                <div class="col-md-4">
+                    <div class="write-up-card">
+                        <img src="https://dockerlabs.es/images/logos/logo.png" alt="DockerLabs WriteUp">
+                        <div class="card-body">
+                            <span class="difficulty easy">Easy</span>
+                            <h3>Pickle Rick</h3>
+                            <p>A Rick and Morty CTF. Help turn Rick back into a human!</p>
+                            <div class="tags">
+                                <span class="tag">ctf</span>
+                                <span class="tag">dirbuster</span>
+                                <span class="tag">linux</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Write-Up 3
+                <div class="col-md-4">
+                    <div class="write-up-card">
+                        <img src="https://dockerlabs.es/images/logos/logo.png" alt="DockerLabs WriteUp">
+                        <div class="card-body">
+                            <span class="difficulty easy">Easy</span>
+                            <h3>Blue</h3>
+                            <p>Deploy & hack into a Windows machine, leveraging common misconfigurations issues.</p>
+                            <div class="tags">
+                                <span class="tag">windows</span>
+                                <span class="tag">eternalblue</span>
+                                <span class="tag">metasploit</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Write-Up 4 -->
+                <!-- <div class="col-md-4">
+                    <div class="write-up-card">
+                        <img src="https://dockerlabs.es/images/logos/logo.png" alt="DockerLabs WriteUp">
+                        <div class="card-body">
+                            <span class="difficulty easy">Easy</span>
+                            <h3>RootMe</h3>
+                            <p>A ctf for beginners, can you root me?</p>
+                            <div class="tags">
+                                <span class="tag">security</span>
+                                <span class="tag">web</span>
+                                <span class="tag">linux</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Write-Up 5 -->
+                <!-- <div class="col-md-4">
+                    <div class="write-up-card">
+                        <img src="https://dockerlabs.es/images/logos/logo.png" alt="DockerLabs WriteUp">
+                        <div class="card-body">
+                            <span class="difficulty easy">Easy</span>
+                            <h3>Bounty Hacker</h3>
+                            <p>You talked a big game about being the most elite hacker in the solar system. Prove it and claim your right to the status of Elite Bounty Hacker!</p>
+                            <div class="tags">
+                                <span class="tag">linux</span>
+                                <span class="tag">tar</span>
+                                <span class="tag">privesc</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- Write-Up 6 -->
+                <!-- <div class="col-md-4">
+                    <div class="write-up-card">
+                        <img src="https://dockerlabs.es/images/logos/logo.png" alt="DockerLabs WriteUp">
+                        <div class="card-body">
+                            <span class="difficulty easy">Easy</span>
+                            <h3>Crack the hash</h3>
+                            <p>Cracking hashes challenges</p>
+                            <div class="tags">
+                                <span class="tag">hash</span>
+                                <span class="tag">cracking</span>
+                                <span class="tag">john</span>
+                            </div>
+                        </div>
+                    </div>  -->
+                </div>
+            </div> 
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 DockerLabs. Todos los derechos reservados.</p>
+    </footer>
+    
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const writeUpCards = document.querySelectorAll('.write-up-card');
+        
+        writeUpCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+                card.style.boxShadow = '0 15px 30px rgba(0,0,0,0.3)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+                card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+            });
+        });
+    });
+    </script>
+</body>
+</html>
