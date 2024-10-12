@@ -1,0 +1,473 @@
+<html><head><base href="/PCBs/BlueJammer/Bjammer.html">
+<title>BlueJammer - Proyecto Avanzado de Ciberseguridad</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&family=Montserrat:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg-color: #0a0e14;
+    --text-color: #e6e6e6;
+    --accent-color: #4a9d5a; /* Softer green */
+    --secondary-color: #1a1a1a;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+@keyframes neonPulse {
+    0% { text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--accent-color), 0 0 15px var(--accent-color); }
+    50% { text-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color), 0 0 30px var(--accent-color); }
+    100% { text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--accent-color), 0 0 15px var(--accent-color); }
+}
+
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
+    margin-top: 50px;
+    color: var(--accent-color);
+    animation: neonPulse 1.5s infinite alternate;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--bg-color);
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #3d8249; /* Darker shade for hover */
+    border-color: #3d8249;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(74, 157, 90, 0.3);
+}
+
+.feature-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.feature-list li {
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+    font-size: 1.1rem;
+}
+
+.feature-list li:before {
+    content: "\f05b";
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+.project-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(74, 157, 90, 0.3);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.project-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(74, 157, 90, 0.5);
+}
+
+.code-block {
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    overflow-x: auto;
+    border-left: 4px solid var(--accent-color);
+}
+
+.code-block code {
+    color: var(--accent-color);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+}
+
+.alert-info {
+    background-color: rgba(33, 150, 243, 0.1);
+    color: #2196F3;
+    border-color: #2196F3;
+    border-radius: 5px;
+}
+
+#pcb-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(74, 157, 90, 0.3);
+    transition: all 0.3s ease;
+}
+
+#pcb-image:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 0 30px rgba(74, 157, 90, 0.5);
+}
+
+.linux-prompt {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.linux-prompt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(74, 157, 90, 0.3);
+}
+
+.prompt-symbol {
+    color: var(--accent-color);
+}
+
+.prompt-text {
+    color: var(--text-color);
+}
+
+.prompt-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background-color: var(--accent-color);
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+.hidden-element {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.fade-in-element {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.attribution {
+    text-align: center;
+    margin-top: 40px;
+    font-style: italic;
+    color: #888;
+}
+
+.github-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.github-link:hover {
+    background-color: #3d8249;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>BlueJammer</h1>
+        <p class="lead text-center">Dispositivo Avanzado de Seguridad contra Ataques Bluetooth</p>
+
+        <img src="https://jlcpcb.com/api/overseas-pcb-order/v1/fileCommon/downloadCommonFile?fileAccessId=8527817618435424257" alt="BlueJammer PCB" id="pcb-image" class="img-fluid">
+
+        <h2>Descripción del Proyecto</h2>
+        <p>El ESP32-BlueJammer (bloqueador de Bluetooth, bloqueador de BLE, bloqueador de WiFi, bloqueador de RC) interrumpe varios dispositivos usando módulos ESP32 y nRF24, causando mucho ruido y enviando paquetes innecesarios (DoS).</p>
+
+        <h2>Características Principales</h2>
+        <ul class="feature-list">
+            <li>Interferencia selectiva de señales Bluetooth con alta precisión </li>
+            <li>Sistema de batería de alta capacidad </li>
+            <li>Diseño ultra-compacto y modular para máxima portabilidad y flexibilidad</li>
+            
+        </ul>
+
+        <h2>Componentes</h2>
+        <ul class="feature-list">
+            <li>Microcontrolador ESP32 </li>
+            <li>Módulo NRF24L01+PA+LNA para transmisión y recepción de alta potencia (2x)</li>
+            <li>Antenas </li>
+            <li>Sistema de gestión de energía TP4056 con protección térmica y de sobrecarga</li>
+            <li>Bateria 3.7v +1500 mAh e Interruptor (Ambos Opcionales)</li>
+            <li>Condensador de 10uF (2x) (cualquier voltaje superior a 5V)</li>
+        </ul>
+        <h2>Componentes Avanzados (Mejorar Rango de Ataque)</h2>
+        <ul class="feature-list">
+            <li> </li>
+            <li>Módulo NRF24L01 E01-2G4M27D (2x)</li>
+            <li>Antenas 12dBi </li>
+            <li>Amplificador 4W 2.4GHz</li>
+           
+        </ul>
+
+        <h2>Arquitectura del Sistema</h2>
+
+<!-- Primera tabla -->
+<table>
+  <thead>
+    <tr>
+      <th>1st nRF24L01 module Pin</th>
+      <th>HSPI Pin (ESP32)</th>
+      <th>10uf capacitor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>VCC</td>
+      <td>3.3V</td>
+      <td>(+) capacitor</td>
+    </tr>
+    <tr>
+      <td>GND</td>
+      <td>GND</td>
+      <td>(-) capacitor</td>
+    </tr>
+    <tr>
+      <td>CE</td>
+      <td>GPIO 16</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>CSN</td>
+      <td>GPIO 15</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>SCK</td>
+      <td>GPIO 14</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>MOSI</td>
+      <td>GPIO 13</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>MISO</td>
+      <td>GPIO 12</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>IRQ</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<hr> <!-- Línea de separación -->
+
+<!-- Segunda tabla -->
+<table>
+  <thead>
+    <tr>
+      <th>2nd nRF24L01 module Pin</th>
+      <th>VSPI Pin (ESP32)</th>
+      <th>10uf capacitor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>VCC</td>
+      <td>3.3V</td>
+      <td>(+) capacitor</td>
+    </tr>
+    <tr>
+      <td>GND</td>
+      <td>GND</td>
+      <td>(-) capacitor</td>
+    </tr>
+    <tr>
+      <td>CE</td>
+      <td>GPIO 22</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>CSN</td>
+      <td>GPIO 21</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>SCK</td>
+      <td>GPIO 18</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>MOSI</td>
+      <td>GPIO 23</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>MISO</td>
+      <td>GPIO 19</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>IRQ</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<hr> <!-- Línea de separación -->
+
+
+        <h2>Funcionamiento Avanzado</h2>
+        <p>Interrumpe
+            audio en altavoces, conexiones de smartphone, WiFi, drones RC (etc.), dispositivos IoT, ¡y mucho más comunicando en 2.4GHz!
+            
+            Ideal para interrupciones controladas y pruebas de seguridad. Basado en comunicación de 2,4GHz.
+        </p>
+            Tiene un gran alcance (mas de 30Metros - puede variar en tu antena y configuracion de hardware!) en las nuevas versiones de Bluetooth con antenas casuales de 2.4GHz, puedes facilmente incrementar esto tambien tomando algunas simples antenas de router «mas grandes». Un amplificador (2.4GHz) puede ser una buena opción también.
+        </p>
+            Recuerda que la interferencia es ilegal y no debe usarse con malas intenciones.
+            
+            </p>
+
+        <div class="alert alert-info" role="alert">
+            <strong>Aviso Legal:</strong> El uso de tecnologías de jamming está estrictamente regulado. BlueJammer está diseñado exclusivamente para investigación, desarrollo y aplicaciones de seguridad autorizadas. Los usuarios deben cumplir con todas las regulaciones locales e internacionales pertinentes.
+        </div>
+
+        <h2>Aplicaciones de Vanguardia</h2>
+        <ul class="feature-list">
+            <li>Protección de infraestructuras críticas contra espionaje inalámbrico</li>
+            
+            <li>Plataforma de pruebas para desarrollo de Conexiones Blueetooth</li>
+            <li>Herramienta educativa para ciberseguridad avanzada </li>
+        </ul>
+
+        <h2>Implicaciones Éticas y Legales</h2>
+        <p>El desarrollo y despliegue de BlueJammer conlleva profundas consideraciones éticas y legales. Este dispositivo debe utilizarse exclusivamente dentro de marcos legales establecidos, para fines de investigación autorizada, educación avanzada en ciberseguridad y protección de infraestructuras críticas. Cualquier uso que interfiera con comunicaciones legítimas o comprometa la privacidad es estrictamente prohibido y conlleva graves consecuencias legales.</p>
+
+        <h2>Visión de Futuro</h2>
+        <p>BlueJammer representa la vanguardia en seguridad de comunicaciones inalámbricas, ofreciendo una solución robusta contra amenazas Bluetooth emergentes y sofisticadas. Su desarrollo continuo se guía por los más altos estándares éticos y técnicos, con el objetivo de mantenerse a la vanguardia de la ciberseguridad en un mundo cada vez más conectado e inalámbrico.</p>
+
+        <div class="attribution">
+            <p>Proyecto creado por emensta</p>
+            <a href="https://github.com/EmenstaNougat/ESP32-BlueJammer" class="github-link" target="_blank">
+                <i class="fab fa-github"></i> Ver en GitHub
+            </a>
+        </div>
+    </div>
+
+    <div class="linux-prompt" onclick="window.location.href='index.html';">
+        <span class="prompt-symbol">$</span>
+        <span class="prompt-text">cd /home/PCBs</span>
+        <span class="prompt-cursor"></span>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const pcbImage = document.getElementById('pcb-image');
+            
+            pcbImage.addEventListener('mouseover', () => {
+                pcbImage.style.transform = 'scale(1.05) rotate(2deg)';
+                pcbImage.style.boxShadow = '0 0 30px rgba(74, 157, 90, 0.5)';
+            });
+
+            pcbImage.addEventListener('mouseout', () => {
+                pcbImage.style.transform = 'scale(1) rotate(0deg)';
+                pcbImage.style.boxShadow = '0 0 20px rgba(74, 157, 90, 0.3)';
+            });
+
+            // Añadir efecto de desplazamiento suave
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Animación de aparición para elementos al hacer scroll
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-element');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('h2, p, .feature-list, .code-block').forEach(el => {
+                el.classList.add('hidden-element');
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
