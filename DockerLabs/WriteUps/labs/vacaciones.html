@@ -1,0 +1,301 @@
+<html><head><base href="/DockerLabs/WriteUps/dockerlabs.html">
+    <title>Write Up Vacaciones - DockerLabs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&family=Montserrat:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+    :root {
+        --bg-color: #121212;
+        --text-color: #ffffff;
+        --sidebar-bg: rgba(18, 18, 18, 0.9);
+        --card-bg: rgba(30, 30, 30, 0.9);
+        --code-bg: #f3e1e1c4;
+        --link-color: #58a6ff;
+    }
+    
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+    
+    .header {
+        background: url('https://dockerlabs.es/images/logos/logo.png') no-repeat center center;
+        background-size: contain;
+        height: 150px;
+        margin-bottom: 2rem;
+        position: relative;
+    }
+    
+    .header::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+    }
+    
+    .header-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding-top: 50px;
+    }
+    
+    h1, h2, h3 {
+        font-family: 'Montserrat', sans-serif;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .content {
+        background-color: var(--card-bg);
+        border-radius: 10px;
+        padding: 30px;
+        margin-bottom: 30px;
+    }
+    
+    pre {
+        background-color: var(--code-bg);
+        border-radius: 5px;
+        padding: 15px;
+        overflow-x: auto;
+        position: relative;
+    }
+    
+    code {
+        font-family: 'Courier New', Courier, monospace;
+        color: #e6e6e6;
+    }
+    
+    .copy-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    
+    a {
+        color: var(--link-color);
+        text-decoration: none;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+    
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+    
+    footer {
+        text-align: center;
+        padding: 20px 0;
+        background-color: var(--sidebar-bg);
+        margin-top: 2rem;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    .content {
+        animation: fadeIn 0.5s ease-out;
+    }
+    
+    @media (max-width: 768px) {
+        .header {
+            height: 100px;
+        }
+        
+        h1 {
+            font-size: 2rem;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+        }
+    }
+
+
+.linux-prompt {
+    position: fixed;
+    top: 60px;
+    left: 20px;
+    z-index: 1000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.linux-prompt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.prompt-symbol {
+    color: #0f0;
+}
+
+.prompt-text {
+    color: #fff;
+}
+
+.prompt-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 15px;
+    background-color: #fff;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+    </style>
+    </head>
+    <body>
+        <div class="linux-prompt" onclick="window.location.href='/DockerLabs/WriteUps/dockerlabs.html';">
+            <span class="prompt-symbol">$</span>
+            <span class="prompt-text">cd /home/DockerLabs/vacaciones</span>
+            <span class="prompt-cursor"></span>
+        </div>
+        <header class="header">
+            <div class="header-content">
+                <h1>Write Up Vacaciones</h1>
+                <p class="subtitle">DockerLabs - Snoody</p>
+            </div>
+        </header>
+    
+        <div class="container">
+            <div class="content">
+                <h2>Primer paso: Descargar la máquina</h2>
+                <p>El primer paso sería descargar la máquina en Dockerlabs.es.</p>
+                <!-- Espacio para imagen 1 -->
+                
+                <p>Luego de haberla descargado, hacemos un unzip del archivo comprimido, y nos quedaría lo siguiente:</p>
+                <!-- Espacio para imagen 2 -->
+    
+                <h2>Despliegue de la máquina</h2>
+                <p>Para desplegar la máquina:</p>
+                <pre><code>sudo bash ./auto_deploy.sh vacaciones.tar</code> <button class="copy-btn" onclick="copyCode(this)">Copiar</button></pre>
+                <!-- Espacio para imagen 3 -->
+    
+                <h2>Escaneo con Nmap</h2>
+                <p>Realizamos un escaneo con Nmap y vemos que los puertos 80 y 22 están abiertos.</p>
+                <!-- Espacio para imagen 4 -->
+    
+                <h2>Whatweb</h2>
+                <p>Hacemos un whatweb para ver si la versión de Apache es vulnerable, en este caso no.</p>
+                <!-- Espacio para imagen 5 -->
+    
+                <h2>Fuzzing de la página</h2>
+                <p>Realizamos un Fuzzing de la página, pero no encontramos nada interesante. Se podría realizar fuzzing en dominios y extensiones como html, php, etc., pero en este caso no lo utilizamos.</p>
+                <pre><code>wfuzz -c --hc 404 -t 200 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt http://172.17.0.2/FUZZ</code> <button class="copy-btn" onclick="copyCode(this)">Copiar</button></pre>
+                <!-- Espacio para imagen 6 -->
+    
+                <h2>Exploración de la página</h2>
+                <p>Si entramos a la página, vemos que no hay nada en el HTML. Al presionar Ctrl+U, observamos un texto: "De: Juan Para: Camilo". Esto nos da una pista de dos posibles usuarios (juan, camilo) a los que podríamos intentar crackear la contraseña por SSH con Hydra.</p>
+                <pre><code>hydra 172.17.0.2 ssh -l camilo -P /usr/share/wordlists/rockyou.txt -vV</code> <button class="copy-btn" onclick="copyCode(this)">Copiar</button></pre>
+                <!-- Espacio para imagen 7 -->
+    
+                <h2>Acceso con SSH</h2>
+                <p>La contraseña de Camilo es "password1". Luego de conectarnos con SSH:</p>
+                <pre><code>ssh camilo@172.17.0.2</code> <button class="copy-btn" onclick="copyCode(this)">Copiar</button></pre>
+                <p>Si obtenemos errores, eliminamos los <code>known_hosts</code>:</p>
+                <pre><code>sudo rm ~/.ssh/known_hosts</code> <button class="copy-btn" onclick="copyCode(this)">Copiar</button></pre>
+                <!-- Espacio para imagen 8 -->
+    
+                <h2>Revisión de archivos</h2>
+                <p>Una vez dentro, no encontramos archivos ocultos en el directorio actual. Sin embargo, recordando el código fuente de la página, había un mensaje: “<!-- De : Juan Para: Camilo, te he dejado un correo es importante... -->”. Esto nos da una pista para encontrar más información.</p>
+                <!-- Espacio para imagen 9 -->
+    
+                <h2>Exploración de directorios</h2>
+                <p>Nos dirigimos a <code>/var/mail/camilo</code> y encontramos nuestra primera flag, que nos proporciona una posible contraseña.</p>
+                <!-- Espacio para imagen 10 -->
+    
+                <h2>Revisión de usuarios</h2>
+                <p>Si hacemos:</p>
+                <pre><code>cat /etc/passwd</code> <button class="copy-btn" onclick="copyCode(this)">Copiar</button></pre>
+                <p>Vemos que hay un usuario "juan" y otro "pedro". Juan ya había sido mencionado en el correo, pero Pedro no.</p>
+                <!-- Espacio para imagen 11 -->
+    
+                <h2>Cambio de usuario a Juan</h2>
+                <p>Nos cambiamos al usuario Juan utilizando la contraseña que encontramos en el correo:</p>
+                <pre><code>su juan</code> <button class="copy-btn" onclick="copyCode(this)">Copiar</button></pre>
+                <!-- Espacio para imagen 12 -->
+    
+                <h2>Escalada de privilegios</h2>
+                <p>Nos dirigimos al directorio <code>/home</code> y vemos que están los tres usuarios que se habían mencionado antes.</p>
+                <!-- Espacio para imagen 13 -->
+    
+                <p>Para ver si hay algún comando que podamos correr sin ser root, como el usuario Juan, ejecutamos el siguiente comando:</p>
+                <pre><code>sudo -l</code> <button class="copy-btn" onclick="copyCode(this)">Copiar</button></pre>
+                <!-- Espacio para imagen 14 -->
+    
+                <p>Descubrimos que podemos ejecutar el comando <code>/usr/bin/ruby</code> con permisos de superusuario. Buscamos en GTFOBins si podemos explotarlo:</p>
+                <a href="https://gtfobins.github.io/#ruby" target="_blank">https://gtfobins.github.io/#ruby</a>
+                <!-- Espacio para imagen 15 -->
+    
+                <p>En este caso, utilizaremos el siguiente exploit usando <code>sudo</code>, ya que tenemos privilegios para ejecutar Ruby:</p>
+                <pre><code>sudo ruby -e 'exec "/bin/sh"'</code> <button class="copy-btn" onclick="copyCode(this)">Copiar</button></pre>
+                <!-- Espacio para imagen 16 -->
+    
+                <h2>Root</h2>
+                <p>Al ejecutar el comando anterior, nos convertimos en root:</p>
+                <!-- Espacio para imagen 17 -->
+    
+                <p>¡Ya con esto tendríamos la máquina resuelta! Para finalizar, volvemos a donde se desplegó la máquina y la detenemos con <code>Ctrl+C</code>.</p>
+                <!-- Espacio para imagen 18 -->
+            </div>
+        </div>
+    
+        <footer>
+            <p>&copy; 2024 Snoody | Write Up de la Máquina "Vacaciones"</p>
+        </footer>
+    
+        <script>
+        function copyCode(button) {
+            const code = button.previousElementSibling.textContent;
+            navigator.clipboard.writeText(code).then(function() {
+                button.innerText = 'Copiado';
+                setTimeout(function() {
+                    button.innerText = 'Copiar';
+                }, 2000);
+            });
+        }
+        </script>
+    </body>
+    </html>
+    
+    
